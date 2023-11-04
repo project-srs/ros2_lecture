@@ -1,0 +1,70 @@
+<?xml version="1.0" ?>
+
+<sdf version="1.6">
+  <world name="visualize_lidar_world">
+    
+    <gui fullscreen="0">
+      <plugin filename="GzScene3D" name="3D View">
+        <camera_pose>10 0 6 0 0.5 3.14</camera_pose>
+        <ignition-gui>
+          <title>3D View</title>
+          <property type="bool" key="showTitleBar">false</property>
+          <property type="string" key="state">docked</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="SwitchPanel" name="iginition_plugin_lecture::SwitchPanel">
+        <forward_speed>0.3</forward_speed>
+        <reverse_speed>-0.1</reverse_speed>
+        <ignition-gui>
+          <title>SwitchPanel</title>
+          <property type="bool" key="showTitleBar">true</property>
+          <property type="string" key="state">docked</property>
+          <property key="resizable" type="bool">true</property>
+        </ignition-gui>
+      </plugin>
+
+      <plugin filename="Teleop" name="ignition::gui::plugins::Teleop">
+        <topic>/cmd_vel</topic>
+        <ignition-gui>
+          <property type="bool" key="showTitleBar">true</property>
+          <property type="string" key="state">docked</property>
+          <property key="resizable" type="bool">true</property>
+        </ignition-gui>
+      </plugin>
+    </gui>
+
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin
+      filename="libignition-gazebo-physics-system.so"
+      name="ignition::gazebo::systems::Physics">
+    </plugin>
+    <plugin
+      filename="libignition-gazebo-sensors-system.so"
+      name="ignition::gazebo::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin
+      filename="libignition-gazebo-scene-broadcaster-system.so"
+      name="ignition::gazebo::systems::SceneBroadcaster">
+    </plugin>
+
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+  </world>
+</sdf>
