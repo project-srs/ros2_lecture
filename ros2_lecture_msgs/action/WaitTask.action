@@ -1,0 +1,6 @@
+string name
+float32 duration
+---
+string message
+---
+float32 left_duration
