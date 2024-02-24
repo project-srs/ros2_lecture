@@ -20,18 +20,16 @@ public:
 
   ~FileWatcher()
   {
-    if (0 <= fd_ && 0 <= wd_)
-    {
+    if (0 <= fd_ && 0 <= wd_) {
       inotify_rm_watch(fd_, wd_);
       close(fd_);
     }
   }
 
-  bool setFilePath(const std::string &file_path)
+  bool setFilePath(const std::string & file_path)
   {
     fd_ = inotify_init();
-    if (fd_ == -1)
-    {
+    if (fd_ == -1) {
       perror("inotify_init");
       return false;
     }
@@ -48,11 +46,9 @@ public:
     char buffer[BUF_LEN];
     int length = read(fd_, buffer, BUF_LEN);
 
-    while (i < length)
-    {
-      struct inotify_event *event = (struct inotify_event *)&buffer[i];
-      if (event->mask & IN_MODIFY)
-      {
+    while (i < length) {
+      struct inotify_event * event = (struct inotify_event *)&buffer[i];
+      if (event->mask & IN_MODIFY) {
         count++;
       }
       i += EVENT_SIZE + event->len;

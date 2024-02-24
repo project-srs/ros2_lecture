@@ -11,7 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(rclcpp_action REQUIRED)
 find_package(ros2_lecture_msgs REQUIRED)
 
-add_executable(server_node 
+add_executable(server_node
   src/server.cpp)
 ament_target_dependencies(server_node
   rclcpp
@@ -22,7 +22,7 @@ install(TARGETS server_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
-add_executable(client_async_node 
+add_executable(client_async_node
   src/client_async.cpp)
 ament_target_dependencies(client_async_node
   rclcpp
@@ -33,7 +33,7 @@ install(TARGETS client_async_node
   DESTINATION lib/${PROJECT_NAME}
 )
 
-add_executable(client_callback_node 
+add_executable(client_callback_node
   src/client_callback.cpp)
 ament_target_dependencies(client_callback_node
   rclcpp

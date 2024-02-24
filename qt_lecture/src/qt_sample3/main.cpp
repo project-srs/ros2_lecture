@@ -4,15 +4,15 @@
 #include <QLineEdit>
 #include <QLabel>
 
-int main(int argc, char *argv[])
+int main(int argc, char * argv[])
 {
   QApplication app(argc, argv);
 
-  QWidget *window = new QWidget;
-  QVBoxLayout *layout = new QVBoxLayout;
-  QPushButton *button = new QPushButton("Quit");
-  QLineEdit *edit = new QLineEdit("");
-  QLabel *label = new QLabel("");
+  QWidget * window = new QWidget;
+  QVBoxLayout * layout = new QVBoxLayout;
+  QPushButton * button = new QPushButton("Quit");
+  QLineEdit * edit = new QLineEdit("");
+  QLabel * label = new QLabel("");
 
   layout->addWidget(button);
   layout->addWidget(edit);

@@ -2,7 +2,8 @@
 
 #include "main_dialog.hpp"
 
-MainDialog::MainDialog(QWidget *parent) : QDialog(parent)
+MainDialog::MainDialog(QWidget * parent)
+: QDialog(parent)
 {
   label_ = new QLabel(tr("empty"));
   setButton_ = new QPushButton(tr("Set"));
@@ -13,7 +14,7 @@ MainDialog::MainDialog(QWidget *parent) : QDialog(parent)
   connect(timer_, &QTimer::timeout, this, &MainDialog::clearButtonText);
   connect(this, &MainDialog::modifyText, label_, &QLabel::setText);
 
-  QVBoxLayout *layout = new QVBoxLayout;
+  QVBoxLayout * layout = new QVBoxLayout;
   layout->addWidget(label_);
   layout->addWidget(lineEdit_);
   layout->addWidget(setButton_);

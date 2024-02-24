@@ -10,14 +10,14 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-add_executable(param_server 
+add_executable(param_server
   src/server.cpp
 )
 ament_target_dependencies(param_server
   rclcpp
 )
 
-add_executable(param_client 
+add_executable(param_client
   src/client.cpp
 )
 ament_target_dependencies(param_client

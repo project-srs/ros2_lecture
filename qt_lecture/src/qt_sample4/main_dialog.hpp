@@ -7,8 +7,9 @@
 class MainDialog : public QDialog
 {
   Q_OBJECT
+
 public:
-  MainDialog(QWidget *parent);
+  MainDialog(QWidget * parent);
 
 public Q_SLOTS:
   void setLabelText();
@@ -18,8 +19,8 @@ Q_SIGNALS:
   void modifyText(QString);
 
 private:
-  QLabel *label_;
-  QLineEdit *lineEdit_;
-  QPushButton *setButton_;
-  QTimer *timer_;
+  QLabel * label_;
+  QLineEdit * lineEdit_;
+  QPushButton * setButton_;
+  QTimer * timer_;
 };

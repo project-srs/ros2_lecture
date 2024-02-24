@@ -2,7 +2,8 @@
 #include <sstream>
 #include <iostream>
 
-TouchWidget::TouchWidget(QWidget *parent) : QWidget(parent)
+TouchWidget::TouchWidget(QWidget * parent)
+: QWidget(parent)
 {
   setMinimumSize(100, 100);
   setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding));
@@ -20,20 +21,17 @@ void TouchWidget::setEnabled(int state)
   update();
 }
 
-void TouchWidget::paintEvent(QPaintEvent *event)
+void TouchWidget::paintEvent(QPaintEvent * event)
 {
   (void)event;
   QPoint center = getCenter();
   int pad_size = getPadSize();
 
   QPainter painter(this);
-  if (!grayout_)
-  {
+  if (!grayout_) {
     painter.setBrush(Qt::white);
     painter.setPen(Qt::black);
-  }
-  else
-  {
+  } else {
     painter.setBrush(Qt::lightGray);
     painter.setPen(Qt::darkGray);
   }
@@ -42,8 +40,7 @@ void TouchWidget::paintEvent(QPaintEvent *event)
   painter.drawLine(center.x(), center.y() - pad_size / 2, center.x(), center.y() + pad_size / 2);
   painter.drawLine(center.x() - pad_size / 2, center.y(), center.x() + pad_size / 2, center.y());
 
-  if (!grayout_)
-  {
+  if (!grayout_) {
     QPen arrow;
     arrow.setWidth(pad_size / 20);
     arrow.setColor(Qt::black);
@@ -58,25 +55,23 @@ void TouchWidget::paintEvent(QPaintEvent *event)
   }
 }
 
-void TouchWidget::mouseMoveEvent(QMouseEvent *event)
+void TouchWidget::mouseMoveEvent(QMouseEvent * event)
 {
-  if (!grayout_)
-  {
+  if (!grayout_) {
     setValue(getScaledPoint(QPoint(event->x(), event->y())));
     update();
   }
 }
 
-void TouchWidget::mousePressEvent(QMouseEvent *event)
+void TouchWidget::mousePressEvent(QMouseEvent * event)
 {
-  if (!grayout_)
-  {
+  if (!grayout_) {
     setValue(getScaledPoint(QPoint(event->x(), event->y())));
     update();
   }
 }
 
-void TouchWidget::mouseReleaseEvent(QMouseEvent *event)
+void TouchWidget::mouseReleaseEvent(QMouseEvent * event)
 {
   (void)event;
   setValue(QPointF{});
@@ -106,7 +101,7 @@ QPoint TouchWidget::getCenter(void) const
   return QPoint((width() - 1) / 2, (height() - 1) / 2);
 }
 
-QPointF TouchWidget::getScaledPoint(const QPoint &point) const
+QPointF TouchWidget::getScaledPoint(const QPoint & point) const
 {
   int pad_size = getPadSize();
   QPoint center = getCenter();
@@ -119,7 +114,7 @@ QPointF TouchWidget::getScaledPoint(const QPoint &point) const
   return output;
 }
 
-QPoint TouchWidget::getPadPoint(const QPointF &point) const
+QPoint TouchWidget::getPadPoint(const QPointF & point) const
 {
   int pad_size = getPadSize();
   QPoint center = getCenter();
